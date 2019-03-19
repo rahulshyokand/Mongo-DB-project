@@ -175,7 +175,7 @@ input[name]{border-radius: 7px;}
                         <div class="form-group">
                             <div class="alert alert-danger">Invalid Credentials</div>
                         </div>';
-												echo "<script> alert($result); </script>";
+											//	echo "<script> alert($result); </script>";
 
 											} ?>
 
