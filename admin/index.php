@@ -22,7 +22,7 @@ if(isset($_POST['submit']))
 			if(!empty($result))
 			{
 				// i = 1 for success login
-				
+
 				//$json = MongoDB\BSON\toJSON(MongoDB\BSON\fromPHP($result));
 		     $i=1;
 			//	 echo "<script> alert($json); </script>";
@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
 				$_SESSION['username']=$username;
 
 		    //load the Dash board file after login success
-				echo'<script> window.location.replace("index.html");</script>';
+				echo'<script> window.location.replace("add_post.html");</script>';
 				//header("Location: https://gdgufest.com/dashboard.php") ;
 			}
 			else
