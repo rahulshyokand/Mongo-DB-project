@@ -22,15 +22,13 @@ if(isset($_POST['submit']))
 			if(!empty($result))
 			{
 				// i = 1 for success login
-
 				//$json = MongoDB\BSON\toJSON(MongoDB\BSON\fromPHP($result));
 		     $i=1;
 			//	 echo "<script> alert($json); </script>";
 				session_start();
 				$_SESSION['username']=$username;
-
 		    //load the Dash board file after login success
-				echo'<script> window.location.replace("add_post.html");</script>';
+				echo'<script> window.location.replace("add_post.php");</script>';
 				//header("Location: https://gdgufest.com/dashboard.php") ;
 			}
 			else
@@ -43,17 +41,6 @@ if(isset($_POST['submit']))
 	}else{
 	    die("Mongo DB not connected!");
 	}
-
-
-
-
-	  // login for acceleron's if statement ends
-
-
-	//login for sportopia
-
-
-
 } //isset submit ends
 ?>
 

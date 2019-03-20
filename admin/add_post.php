@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(isset($_SESSION['username'])){
+echo "Account : ".$_SESSION['username'];
+$username = $_SESSION['username'];
+
+}
+else {
+  	echo'<script> window.location.replace("index.php");</script>';
+}
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,11 +52,11 @@
                           <label class="label label--block">Choose Type of Post</label>
                           <div class="p-t-15">
                               <label class="radio-container m-r-55">Article
-                                  <input type="radio" checked="checked" name="type">
+                                  <input type="radio" checked="checked" name="type" value="article">
                                   <span class="checkmark"></span>
                               </label>
                               <label class="radio-container">News
-                                  <input type="radio" name="type">
+                                  <input type="radio" name="type" value="news">
                                   <span class="checkmark"></span>
                               </label>
                           </div>
@@ -58,8 +70,8 @@
 
                                     <div class="col-1">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="phone"> </textarea>
-                                            <label class="label--desc">Post Content</label>
+                                            <input class="input--style-5" type="text" name="tags"> </textarea>
+                                            <label class="label--desc">Comma Seperate Tags</label>
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +88,7 @@
 
                                     <div class="col-12">
                                         <div class="input-group-desc">
-                                            <textarea class="input--style-5" type="text" name="phone"> </textarea>
+                                            <textarea class="input--style-5" type="text" name="content"> </textarea>
                                             <label class="label--desc">Post Content</label>
                                         </div>
                                     </div>
