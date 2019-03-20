@@ -1,20 +1,19 @@
 <?php
-
+require '../config.php' ;
 // file imported for mongo connection setup
-require '../vendor/autoload.php'; // include Composer's autoloader
+//require '../vendor/autoload.php'; // include Composer's autoloader
 $i=0;
 if(isset($_POST['submit']))
 {
 	$username=$_POST['username'];
 	$password=md5($_POST['password']);
-
 	//verify Data
-	 $con = new MongoDB\Client("mongodb://localhost:27017");
+	// $con = new MongoDB\Client("mongodb://localhost:27017");
 	//$con = new MongoClient();
 	// Select Database
-	if($con){
-		// Select DataBase
-	    $db = $con->user_preference;
+	if($client){
+		// Selected in config.php File DataBase
+	  /********  $db = $->user_preference; *****/
 	    // Select Collection
 	    $collection = $db->account;
 	    $qry = array("username" => $username, "password" => $password);
@@ -33,7 +32,6 @@ if(isset($_POST['submit']))
 			}
 			else
 			{
-
 				// i = 2 for invlid credentials
 		    $i=2;
 			}

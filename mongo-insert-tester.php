@@ -1,14 +1,12 @@
 <?php
-require 'vendor/autoload.php'; // include Composer's autoloader
-
+/**Config File for DB connection**/
+require 'config.php' ;
+/******Selecting Collection For usage*******/
 $var = 'article';
-
-$client = new MongoDB\Client("mongodb://localhost:27017");
-
-$collection = $client->user_preference->;
-
+$collection = $db->$var;
+/*Inserting Data in DB*/
 $result = $collection->insertOne( [ 'tag' => ['Technology' , 'cybersecurity' , 'Huawei' ] , 'date' => date("Y-m-d")   , 'news' => "Huawei opens cybersecurity lab in Brussels to win over EU" ] );
-
+/***Output for the insertion shown***/
 echo "Inserted with Object ID '{$result->getInsertedId()}'";
 
 ?>
