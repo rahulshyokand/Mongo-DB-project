@@ -2,6 +2,7 @@
 session_start();
 if(isset($_SESSION['username'])){
 echo "Account : ".$_SESSION['username'];
+echo '<h3> <a href="logout.php"> Logout </a> </h3>';
 $username = $_SESSION['username'];
 
 }
