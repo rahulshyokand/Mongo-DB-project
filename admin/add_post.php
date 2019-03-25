@@ -4,7 +4,6 @@ if(isset($_SESSION['username'])){
 echo "Account : ".$_SESSION['username'];
 echo '<h3> <a href="logout.php"> Logout </a> </h3>';
 $username = $_SESSION['username'];
-
 }
 else {
   	echo'<script> window.location.replace("index.php");</script>';
@@ -22,22 +21,7 @@ else {
 
    $tags_array = explode(",",$tag);
    $content = $_POST['content'];
-  //
-  // echo $type ;
-  //  echo '<br>';
-  //    echo $tag;
-  //      echo '<br>';
-  //  echo $tags_array ;
-  //  echo '<br>';
-  //  echo '<br>';
-  //  echo $content ;
 
- //  die  ;
- //   $type=$_POST['type'];
- //   $tag = $_POST['tags'];
- //
- // $tags_array = explode(",",$tag);
-   // $content = $_POST['content'];
    if($client){
 
        // Select Collection

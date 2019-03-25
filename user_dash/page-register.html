@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" id="login-page1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>User Preferences</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <!-- Custom Stylesheet -->
+    <link href="dash/css/style.css" rel="stylesheet">
+
+</head>
+
+
+<body class="h-100">
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <div class="login-bg h-100">
+        <div class="container h-60 w-100 p-3">
+            <div class="row justify-content-center h-100">
+                <div class="col-xl-6">
+                    <div class="form-input-content login-form">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="logo text-center">
+                                    <!-- <a href="index.html">
+                                        <img src="assets/images/f-logo.png" alt=" ">
+                                    </a> -->
+                                </div>
+                                <h4 class="text-center mt-4">Sign Up for User Preferences Panel</h4>
+
+                                  <div id="success" style="font-size: 10px;display: none; text-align: center ;">
+                                                      <br>   <div class="container-login100-form-btn  p-b-20">
+                                                        <br>
+                                                            <span class="alert alert-success">
+                                                                  Sign up successfull redirecting...
+                                                            </span>
+                                                        </div> <br>
+                                                    </div>
+                                                    <div id="failed" style="font-size: 10px;display: none;  text-align: center ;">
+                                                        <br>   <div class="container-login100-form-btn  p-b-20">
+                                                          <br>
+                                                            <span class="alert alert-danger">
+                                                             User with this Email id already exists
+                                                            </span>
+                                                        </div>   <br>
+                                                    </div>
+
+                                                    <div style="font-size: 10px;display: none;  text-align: center ;" id="error">
+                                                      <br>     <div class="container-login100-form-btn  p-b-20">
+                                                        <br>
+                                                            <span class="alert alert-danger">
+                                                                Something went wrong! Server Issue.
+                                                            </span>
+                                                        </div>  <br>
+                                                    </div>
+
+                                <form id="data" class="mt-5 mb-5" enctype="multipart/form-data" method="post">
+
+                                 <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Email</label>
+                                        <input type="email" name="email" class="form-control" placeholder="Email">
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Password</label>
+                                        <input type="password" name="password"class="form-control" placeholder="8 Characters or more">
+                                      </div>
+                                      </div>
+                                       <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Name</label>
+                                        <input type="text" name="name" class="form-control" placeholder="Full Name">
+                                    </div>
+                                    <div class="form-group col-md-6 ">
+                                        <label>Contact</label>
+                                        <input type="number" name="contact" class="form-control" placeholder="Phone Number">
+                                    </div>
+                                  </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <!-- <div class="form-check p-l-0">
+                                                <input class="form-check-input" type="checkbox" id="basic_checkbox_1">
+                                                <label class="form-check-label ml-3" for="basic_checkbox_1">Check me out</label>
+                                            </div> -->
+                                        </div>
+                                        <!-- <div class="form-group col-md-6 text-right"><a href="page-recover.html">Forgot Password?</a>
+                                        </div> -->
+                                    </div>
+                                    <div class="text-center mb-4 mt-4">
+                                        <button type="submit" id="register" class="btn btn-primary">Sign up</button>
+                                    </div>
+                                </form>
+                                <!-- <div class="text-center">
+                                    <h5 class="mb-5">Or with Login</h5>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item m-t-10"><a href="javascript:void()" class="btn btn-facebook"><i class="fa fa-facebook"></i></a>
+                                        </li>
+                                        <li class="list-inline-item m-t-10"><a href="javascript:void()" class="btn btn-twitter"><i class="fa fa-twitter"></i></a>
+                                        </li>
+                                        <li class="list-inline-item m-t-10"><a href="javascript:void()" class="btn btn-linkedin"><i class="fa fa-linkedin"></i></a>
+                                        </li>
+                                        <li class="list-inline-item m-t-10"><a href="javascript:void()" class="btn btn-google-plus"><i class="fa fa-google-plus"></i></a>
+                                        </li>
+                                    </ul>
+                                    <!-- <p class="mt-5">Don't have an account? <a href="javascript:void()">Register Now</a> -->
+                                    </p>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+    <!-- Common JS -->
+    <script src="assets/plugins/common/common.min.js"></script>
+    <!-- Custom script -->
+    <script src="dash/js/custom.min.js"></script>
+    <script src="dash/js/settings.js"></script>
+    <script src="dash/js/gleek.js"></script>
+</body>
+
+</html
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    $(function() {
+        $('form').submit(function(e) {
+            $('#register').text('Registering...');
+            e.preventDefault();
+            jQuery.ajax({
+                type: 'POST',
+                url: "api/register.php",
+                data: new FormData($("#data")[0]),
+                processData: false,
+                contentType: false,
+                success: function(data)
+                {
+                         //test status or error with alert
+                      alert(data);
+                     if(data == 1)
+                    {
+                        block('#failed','#error');
+                        $('#success').css('display','block');
+                        $('#register').text('Registered');
+                      //  window.location.href='login/confirm.html';
+                    }
+                    //user exists
+                    else if(data == 2)
+                    {
+                        block('#error','#success');
+                        $('#register').text("Register");
+                        $('#failed').css('display','block');
+                        //window.location.href='login.php';
+                    }
+                    else
+                    {
+                        block('#failed','#success');
+                        $('#error').css('display','block');
+                        $('#register').text('Register');
+                    }
+                }
+            });
+        });
+    });
+    function block(a,b)
+    {
+        $(a).css('display', 'none');
+        $(b).css('display', 'none');
+    }
+
+</script>

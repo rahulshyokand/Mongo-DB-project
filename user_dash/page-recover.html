@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" id="login-page1">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Gleek - Bootstrap Admin Dashboard HTML Template</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <!-- Custom Stylesheet -->
+    <link href="dash/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="h-100">
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <div class="login-bg h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100">
+                <div class="col-xl-6">
+                    <div class="form-input-content">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="logo text-center">
+                                    <a href="index.html">
+                                        <img src="assets/images/f-logo.png" alt="">
+                                    </a>
+                                </div>
+                                <h4 class="text-center mt-5">Reset Password</h4>
+                                <p class="text-center">Enter your Email and a six digit OTP will be sent to you!</p>
+                                <br>
+                                <div id="success" style="font-size: 10px;display: none; text-align:center ;">
+
+                                    <div class="container-login100-form-btn  p-b-20">
+
+                                        <span class="alert alert-success">
+
+                                            Check you email for six digit OTP...
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <div id="faild" style="font-size: 10px;display: none; text-align:center ;">
+
+                                    <div class="container-login100-form-btn  p-b-20">
+
+                                        <span class="alert alert-danger">
+
+                                            Sorry! invalid email. Try again
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <div style="font-size: 10px;display: none; text-align:center ;" id="error">
+
+                                    <div class="container-login100-form-btn  p-b-20">
+
+                                        <span class="alert alert-danger">
+
+                                            Something went wrong!
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
+                                <div style="font-size: 10px;display: none;  text-align:center ;" id="activated">
+
+                                    <div class="container-login100-form-btn  p-b-20">
+
+                                        <span class="alert alert-success">
+
+                                            Your password has been Changed.
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
+                                <div style="font-size: 10px;display: none; text-align:center ;" id="invalid_token">
+
+                                    <div class="container-login100-form-btn  p-b-20">
+
+                                        <span class="alert alert-danger">
+
+                                            Invalid Token. Try again.
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <form class="mt-5 mb-5">
+                                    <div class="form-group">
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                                    </div>
+
+                                      <div id="security-code" style="display: none">
+
+
+
+                                      </div>
+
+
+                                      <div id="password" style="display: none">
+
+
+
+                                      </div>
+
+
+
+                                    <div class="text-center mb-4 mt-5">
+                                        <button type="submit" id="submit" class="btn btn-primary">Send</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+    <!-- Common JS -->
+    <script src="assets/plugins/common/common.min.js"></script>
+    <!-- Custom script -->
+    <script src="dash/js/custom.min.js"></script>
+    <script src="dash/js/settings.js"></script>
+    <script src="dash/js/gleek.js"></script>
+</body>
+
+</html>
+<script type="text/javascript">
+
+    $(function() {
+
+        $('form').on('submit', function(e) {
+
+        $('#submit').text('Sending...');
+
+            e.preventDefault();
+
+            var email = $('#email').val();
+
+            $.ajax({
+
+                url: 'api/recover.php',
+
+                type: 'POST',
+
+                dataType: 'text',
+
+                data: $('form').serialize(),
+
+                success: function(data) {
+
+                    //alert(data);
+                    $('#security-code').css('display', 'none');
+                    $('#password').css('display', 'none');
+                    if (data == 2)
+
+                    {
+
+                        block('#success','#error','#invalid_token','activated');
+
+                        $('#faild').css('display', 'block');
+                        $('#submit').text('Send');
+
+
+                    }
+
+                    else if (data == 1)
+
+                    {
+
+                        block('#faild','#error','#invalid_token','activated');
+
+                        $('#success').css('display', 'block');
+                        $('#submit').val('Update');
+                        $('#security-code').css('display', 'block');
+                        $('#password').css('display', 'block');
+                        $('#security-code').html('<div class="form-group"><input type="number" name="token" id="token" class="form-control" placeholder="OTP"> </div>');
+
+                        $('#password').html('<div class="form-group"><input type="password" name="password" id="password" class="form-control" placeholder="Password"> </div>');
+                        $('#submit').text('Update');
+                    }
+
+                    else if (data == 5)
+
+                    {
+
+                        block('#faild','#error','#security-code','#success');
+                        $('#invalid_token').css('display', 'none');
+                        $('#activated').css('display', 'block');
+                          $('#submit').text('Password Updated');
+                        setTimeout(
+                          function()
+                          {
+                            //do something special
+                            // redirecting to next page
+                          window.location.replace('page-login.html');
+                        }, 1300);
+
+                    }
+                    else if (data == 6)
+
+                    {
+
+                        block('#faild','#error','#success','#activated');
+                        $('#invalid_token').css('display', 'block');
+                        $('#submit').val('Update');
+                        $('#security-code').css('display', 'block');
+                        $('#password').css('display', 'block');
+                        $('#security-code').html('<div class="form-group"><input type="number" name="token" id="token" class="form-control" placeholder="OTP"> </div>');
+                        $('#password').html('<div class="form-group"><input type="password" name="password" id="password" class="form-control" placeholder="Password"> </div>');
+                        $('#submit').text('Update');
+
+                    }
+                    else
+                    {
+
+                        block('#faild','#success');
+
+                        $('#error').css('display', 'block');
+
+                    }
+
+                }
+
+            });
+
+
+
+        });
+
+    });
+
+    function block(a,b,c,d)
+
+    {
+
+        $(a).css('display', 'none');
+
+        $(b).css('display', 'none');
+        $(c).css('display', 'none');
+
+        $(d).css('display', 'none');
+
+    }
+
+</script>
