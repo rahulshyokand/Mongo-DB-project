@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Wilyer Console</title>
+    <title>User Preference Console</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <link href="../assets/plugins/jquery-steps/css/jquery.steps.css" rel="stylesheet">
@@ -60,9 +60,8 @@
                   <!--**********************************
                       Content body start
                   ***********************************-->
-                  <!--**********************************
-                      Content body start
-                  ***********************************-->
+
+
                   <div class="content-body">
                       <div class="container-fluid">
                           <div class="row page-titles">
@@ -71,43 +70,33 @@
                               </div>
                               <div class="col p-md-0">
                                   <ol class="breadcrumb">
-                                      <li class="breadcrumb-item"><a href="javascript:void(0)">Layout</a>
+                                      <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a>
                                       </li>
-                                      <li class="breadcrumb-item active">Blank</li>
+                                      <li class="breadcrumb-item active">News</li>
                                   </ol>
                               </div>
                           </div>
+                          <!-- row -->
                           <div class="row">
                               <div class="col-12">
+                                <!-- To be run in a loop for showing the news for the user -->
                                   <div class="card">
-                                      <div class="card-body card-body-scroll">
-                                          <h4 class="card-title mb-4">Input Tags</h4>
-                                          <div class="form-group mb-5">
-                                              <input class="form-control tags" id="tags_1" placeholder="Add tags" type="text" value="Oregon,roffle">
-                                          </div>
-                                          <h4 class="card-title mb-4">Input Group Tags</h4>
-                                          <div class="input-group mb-4">
-                                              <div class="input-group-prepend">
-                                                  <span class="input-group-text" id="inputGroupPrepend2">Tags</span>
-                                              </div>
-                                              <input type="text" value="Montana,Colorado,Oregon,roffle" class="form-control" id="tags_2" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
-                                          </div>
-                                          <div class="input-group">
-                                              <input type="text" value="Montana,Colorado,Oregon,roffle"  class="form-control" id="tags_3" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
-                                              <div class="input-group-append c-pointer">
-                                                  <span class="input-group-text" id="inputGroupPrepend3">Tags</span>
-                                              </div>
-                                          </div>
+                                      <div class="card-body">
+                                          <h4 class="card-title">Default Summernote</h4>
+                                          <p>Posted: Date</p>
+                                          <div class="summernote"></div>
                                       </div>
                                   </div>
                               </div>
                           </div>
                       </div>
+
+
+
+
+
                       <!-- #/ container -->
                   </div>
-                  <!--**********************************
-                      Content body end
-                  ***********************************-->
 
         <!--**********************************
             Content body end

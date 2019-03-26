@@ -3,7 +3,7 @@
 ***********************************-->
 <div class="footer">
     <div class="copyright">
-        <p>Copyright &copy; Designed & Developed by <a href="https://wilyer.com">Wilyer </a><?php echo date("Y"); ?></p>
+        <p>Copyright &copy; Developed by <a href="">GDGU CSE CLASS </a><?php echo date("Y"); ?></p>
     </div>
 </div>
 <!--**********************************
