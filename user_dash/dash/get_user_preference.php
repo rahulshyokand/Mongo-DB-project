@@ -1,3 +1,6 @@
+<?php
+require '../api/fetch_user.php';
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 

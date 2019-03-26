@@ -2,7 +2,7 @@
     Nav header start
 ***********************************-->
 <div class="nav-header">
-    <div class="brand-logo"><a href="index.html"><b><img src="../assets/images/logo.png" alt=""> </b><span class="brand-title"><img src="../assets/images/logo-text.png" alt=""></span></a>
+    <div class="brand-logo"><a href="index.html"><b><img src="../assets/images/logo.pg" alt=""> </b><span class="brand-title"><img src="../assets/images/logo-text.pg" alt=""></span></a>
     </div>
     <div class="nav-control">
         <div class="hamburger"><span class="line"></span>  <span class="line"></span>  <span class="line"></span>
@@ -24,7 +24,7 @@
 
                         <li class="icons">
                             <a href="javascript:void(0)" class="log-user">
-                                <img src="../assets/images/avatar/1.jpg" alt=""> <span>Name</span>  <i class="fa fa-caret-down f-s-14" aria-hidden="true"></i>
+                                <img src="../assets/images/avatar/1.jg" alt=""> <span><?php echo $arr[0]['name'] ;?></span>  <i class="fa fa-caret-down f-s-14" aria-hidden="true"></i>
                             </a>
                             <div class="drop-down dropdown-profile animated bounceInDown">
                                 <div class="dropdown-content-body">

@@ -1,25 +1,30 @@
  <?php
- session_start();
- include 'config.php';
- $data=array();
+  session_start();
+ if(isset($_SESSION['email'])){
+ include '../../config.php';
+  $email=$_SESSION['email'] ;
+ $collection = $db->user_account ;
+ $qry = array("email" => $email);
+ $cursor = $collection->find($qry);
+$arr = $cursor->toArray() ;
+return $arr ;
+}
+else {
+  echo'<script> window.location.replace("../page-login.html");</script>';
+}
+// fetching an object to array and accessing allthe elements on documnet
+ //echo $arr[0]['name'] ;
+//echo $a[]["email"] ;
+//
+// foreach ($cursor as $obj) {
+//   echo "email :" . $obj["email"] ;
+//   echo "<br>";
+//   echo "name :" . $obj["name"] ;
+//   echo "<br>";
+//   echo "password :" . $obj["password"] ;
+//   echo "<br>";
+//   echo "contact:" . $obj["contact"] ;
+//     echo "<br>";
+// }
 
- if(isset($_SESSION['email']))
- {
- 	$email=$_SESSION['email'];
- 	$sql="SELECT * FROM users where email=$email";
- 	$result = $conn->query($sql);
- 	if($result->num_rows>0)
- 	{
- 		while ($row=$result->fetch_assoc()) {
- 			array_push($data, $row);
- 		}
- 	}
- 	echo json_encode($data);
- }
- else
- {
-  echo '<script>window.location.href = '../page-login.html' </script>';
- 	//$data = array(array('email' => "error"));
- 	//echo json_encode($data);
- }
  ?>

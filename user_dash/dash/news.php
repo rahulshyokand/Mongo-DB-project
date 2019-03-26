@@ -1,5 +1,6 @@
 <?php
-//require '../api/fetch_user.php';
+require '../api/fetch_user.php' ;
+require '../api/fetch_news.php'   ;
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,13 +81,30 @@
                           <div class="row">
                               <div class="col-12">
                                 <!-- To be run in a loop for showing the news for the user -->
-                                  <div class="card">
+
+
+                              <?php
+                               for($i = 0 ; $i < count($news); $i = $i + 1 ){
+                                 $tag = $news[$i]['tag'] ;
+                                 $tag_array = object_2_array($tag) ;
+                                echo '  <div class="card">
                                       <div class="card-body">
-                                          <h4 class="card-title">Default Summernote</h4>
-                                          <p>Posted: Date</p>
+                                          <h4 class="card-title">'. $news[$i]['news'].'</h4>
+                                          <p>Posted On : '. $news[$i]['date'] . '</p>
+                                            <p>Tags : '. join(', ',$tag_array). '</p>
+                                          <div class="summernote"></div>
+                                      </div>
+                                  </div> '  ;
+                                }
+                                ?>
+                                  <div class="card" style="display: none ;">
+                                      <div class="card-body">
+                                          <h4 class="card-title"><?php echo $news[0]['news'] ; ?></h4>
+                                          <p>Posted On : <?php echo $news[0]['date'] ; ?> </p>
                                           <div class="summernote"></div>
                                       </div>
                                   </div>
+
                               </div>
                           </div>
                       </div>
