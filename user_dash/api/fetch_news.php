@@ -6,11 +6,11 @@ function object_2_array($result)
 	{
 		if (is_object($value))
 		{
-			$array[$key]=object_2_array($value);
+			$array[$key] = object_2_array($value);
 		}
 		if (is_array($value))
 		{
-			$array[$key]=object_2_array($value);
+			$array[$key] = object_2_array($value);
 		}
 		else
 		{
