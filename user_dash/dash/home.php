@@ -12,9 +12,13 @@ require '../api/fetch_user.php';
     <title>Wilyer Console</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+      <link rel="stylesheet" href="../assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css">
     <link href="../assets/plugins/jquery-steps/css/jquery.steps.css" rel="stylesheet">
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css">
+
+
 
 </head>
 
@@ -72,9 +76,9 @@ require '../api/fetch_user.php';
                               </div>
                               <div class="col p-md-0">
                                   <ol class="breadcrumb">
-                                      <li class="breadcrumb-item"><a href="javascript:void(0)">Layout</a>
+                                      <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a>
                                       </li>
-                                      <li class="breadcrumb-item active">Blank</li>
+                                      <li class="breadcrumb-item active">Interests</li>
                                   </ol>
                               </div>
                           </div>
@@ -82,23 +86,20 @@ require '../api/fetch_user.php';
                               <div class="col-12">
                                   <div class="card">
                                       <div class="card-body card-body-scroll">
-                                          <h4 class="card-title mb-4">Input Tags</h4>
-                                          <div class="form-group mb-5">
-                                              <input class="form-control tags" id="tags_1" placeholder="Add tags" type="text" value="Oregon,roffle">
-                                          </div>
-                                          <h4 class="card-title mb-4">Input Group Tags</h4>
+
+                                          <h4 class="card-title mb-4">Add Your Interests</h4>
                                           <div class="input-group mb-4">
                                               <div class="input-group-prepend">
-                                                  <span class="input-group-text" id="inputGroupPrepend2">Tags</span>
+                                                  <span class="input-group-text" id="inputGroupPrepend2">Topics</span>
                                               </div>
-                                              <input type="text" value="Montana,Colorado,Oregon,roffle" class="form-control" id="tags_2" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+                                                <form id="data" class="mt-5 mb-5" enctype="multipart/form-data" method="post">
+                                              <input type="text" value="" class="form-control" id="tags_2" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+                                                </form>
                                           </div>
-                                          <div class="input-group">
-                                              <input type="text" value="Montana,Colorado,Oregon,roffle"  class="form-control" id="tags_3" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
-                                              <div class="input-group-append c-pointer">
-                                                  <span class="input-group-text" id="inputGroupPrepend3">Tags</span>
-                                              </div>
+                                          <div class="text-center mb-4 mt-4">
+                                              <button type="submit" id="submit" class="btn btn-primary">Update Interests</button>
                                           </div>
+
                                       </div>
                                   </div>
                               </div>
@@ -149,7 +150,68 @@ require '../api/fetch_user.php';
     <script src="../assets/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script src="js/plugins-init/jquery-steps-init.js"></script>
 
+        <script src="../assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+        <script src="js/plugins-init/bootstrap-tagsinput-init.js"></script>
+
 
 </body>
 
 </html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    $(function() {
+        $('form').submit(function(e) {
+            $('#register').text('Registering...');
+            e.preventDefault();
+            jQuery.ajax({
+                type: 'POST',
+                url: "api/register.php",
+                data: new FormData($("#data")[0]),
+                processData: false,
+                contentType: false,
+                success: function(data)
+                {
+                         //test status or error with alert
+                    //  alert(data);
+                     if(data == 1)
+                    {
+                        block('#failed','#error');
+                        $('#success').css('display','block');
+                        $('#register').text('Registered');
+                        setTimeout(
+                          function()
+                          {
+                            //do something special
+                            // redirecting to next page
+                            window.location.href='page-login.html';
+                          }, 500);
+
+                    }
+                    //user exists
+                    else if(data == 2)
+                    {
+                        block('#error','#success');
+                        $('#register').text("Register");
+                        $('#failed').css('display','block');
+                        //window.location.href='login.php';
+                    }
+                    else
+                    {
+                        block('#failed','#success');
+                        $('#error').css('display','block');
+                        $('#register').text('Register');
+                    }
+                }
+            });
+        });
+    });
+    function block(a,b)
+    {
+        $(a).css('display', 'none');
+        $(b).css('display', 'none');
+    }
+
+</script>

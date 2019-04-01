@@ -1,5 +1,6 @@
 <?php
 require '../api/fetch_user.php';
+require '../api/fetch_article.php';
  ?>
 
 <!DOCTYPE html>
@@ -69,33 +70,28 @@ require '../api/fetch_user.php';
                               <div class="col p-md-0">
                                   <h4>Hello, <span>Welcome here</span></h4>
                               </div>
-                              <div class="col p-md-0">
-                                  <ol class="breadcrumb">
-                                      <li class="breadcrumb-item"><a href="javascript:void(0)">From</a>
-                                      </li>
-                                      <li class="breadcrumb-item active">Summernote</li>
-                                  </ol>
-                              </div>
+
                           </div>
                           <!-- row -->
                           <div class="row">
                               <div class="col-12">
-
+                                <?php
+                                 for($i = 0 ; $i < count($article); $i = $i + 1 ){
+                                   $tag = $article[$i]['tag'] ;
+                                   $tag_array = object_2_array($tag) ;
+                                  echo '
                                   <div class="card">
                                       <div class="card-body">
                                           <div class="inline-editor">
-                                              <h4 class="card-title mb-5">Inline Summernote Editor</h4>
-                                              <h5>Title Heading will be <b>apear here</b></h5>
-                                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitconsectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud Exercitation ullamco laboris
-                                                  nisi ut aliquip ex ea commodo consequat.</p>
-                                              <ul class="list-icons">
-                                                  <li><i class="fa fa-check text-success"></i> Lorem ipsum dolor sit amet</li>
-                                                  <li><i class="fa fa-check text-success"></i> Consectetur adipiscing elit</li>
-                                                  <li><i class="fa fa-check text-success"></i> Integer molestie lorem at massa</li>
-                                              </ul>
+                                              <h4 class="card-title mb-5">'. $article[$i]['article'].'</h4>
+                                            
+
+                                                <p>Tags : '. join(', ',$tag_array). '</p>
+
                                           </div>
                                       </div>
-                                  </div>
+                                  </div> ' ; } ?>
+
 
                               </div>
                           </div>
