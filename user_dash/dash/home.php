@@ -1,5 +1,6 @@
 <?php
 require '../api/fetch_user.php';
+require '../api/fetch_article.php';
  ?>
 
 <!DOCTYPE html>
@@ -86,19 +87,22 @@ require '../api/fetch_user.php';
                               <div class="col-12">
                                   <div class="card">
                                       <div class="card-body card-body-scroll">
-
+                                      <?php
+                                        $tag = $arr[0]['tags'] ;
+                                        $tag_array = object_2_array($tag) ;
+                                        ?>
                                           <h4 class="card-title mb-4">Add Your Interests</h4>
                                           <div class="input-group mb-4">
                                               <div class="input-group-prepend">
                                                   <span class="input-group-text" id="inputGroupPrepend2">Topics</span>
                                               </div>
                                                 <form id="data" class="mt-5 mb-5" enctype="multipart/form-data" method="post">
-                                              <input type="text" value="" class="form-control" id="tags_2" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
-                                                </form>
+                                              <input type="text" value="<?php   echo join(', ',$tag_array) ; ?>" name="topics" class="form-control" id="tags_2" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
                                           </div>
                                           <div class="text-center mb-4 mt-4">
-                                              <button type="submit" id="submit" class="btn btn-primary">Update Interests</button>
+                                              <button type="submit" id="register" class="btn btn-primary">Update Interests</button>
                                           </div>
+                                            </form>
 
                                       </div>
                                   </div>
@@ -164,30 +168,30 @@ require '../api/fetch_user.php';
 
     $(function() {
         $('form').submit(function(e) {
-            $('#register').text('Registering...');
+            $('#register').text('Syncing...');
             e.preventDefault();
             jQuery.ajax({
                 type: 'POST',
-                url: "api/register.php",
+                url: "../api/add_tags.php",
                 data: new FormData($("#data")[0]),
                 processData: false,
                 contentType: false,
                 success: function(data)
                 {
                          //test status or error with alert
-                    //  alert(data);
+                     alert(data);
                      if(data == 1)
                     {
                         block('#failed','#error');
                         $('#success').css('display','block');
-                        $('#register').text('Registered');
-                        setTimeout(
-                          function()
-                          {
-                            //do something special
-                            // redirecting to next page
-                            window.location.href='page-login.html';
-                          }, 500);
+                        $('#register').text('Preferences Synced');
+                        // setTimeout(
+                        //   function()
+                        //   {
+                        //     //do something special
+                        //     // redirecting to next page
+                        //     window.location.href='page-login.html';
+                        //   }, 500);
 
                     }
                     //user exists

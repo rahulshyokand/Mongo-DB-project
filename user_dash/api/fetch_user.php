@@ -1,5 +1,5 @@
  <?php
-  session_start();
+session_start();
  if(isset($_SESSION['email'])){
  include '../../config.php';
   $email=$_SESSION['email'] ;
@@ -8,10 +8,12 @@
  $cursor = $collection->find($qry);
 $arr = $cursor->toArray() ;
 return $arr ;
+//print_r($arr) ;
 }
 else {
   echo'<script> window.location.replace("../page-login.html");</script>';
 }
+
 // fetching an object to array and accessing allthe elements on documnet
  //echo $arr[0]['name'] ;
 //echo $a[]["email"] ;

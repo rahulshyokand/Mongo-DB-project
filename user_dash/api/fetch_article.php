@@ -1,23 +1,23 @@
 <?php
 function object_2_array($result)
 {
-	$array = array();
-	foreach ($result as $key=>$value)
-	{
-		if (is_object($value))
-		{
-			$array[$key] = object_2_array($value);
-		}
-		if (is_array($value))
-		{
-			$array[$key] = object_2_array($value);
-		}
-		else
-		{
-			$array[$key]=$value;
-		}
-	}
-	return $array;
+ $array = array();
+ foreach ($result as $key=>$value)
+ {
+   if (is_object($value))
+   {
+     $array[$key] = object_2_array($value);
+   }
+   if (is_array($value))
+   {
+     $array[$key] = object_2_array($value);
+   }
+   else
+   {
+     $array[$key]=$value;
+   }
+ }
+ return $array;
 }
 include '../../config.php';
 $collection = $db->article ;
