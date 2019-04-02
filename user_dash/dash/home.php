@@ -88,8 +88,9 @@ require '../api/fetch_article.php';
                                   <div class="card">
                                       <div class="card-body card-body-scroll">
                                       <?php
+                                      if(isset($arr[0]['tags'])){
                                         $tag = $arr[0]['tags'] ;
-                                        $tag_array = object_2_array($tag) ;
+                                        $tag_array = object_2_array($tag) ;}
                                         ?>
                                           <h4 class="card-title mb-4">Add Your Interests</h4>
                                           <div class="input-group mb-4">
@@ -97,7 +98,7 @@ require '../api/fetch_article.php';
                                                   <span class="input-group-text" id="inputGroupPrepend2">Topics</span>
                                               </div>
                                                 <form id="data" class="mt-5 mb-5" enctype="multipart/form-data" method="post">
-                                              <input type="text" value="<?php   echo join(', ',$tag_array) ; ?>" name="topics" class="form-control" id="tags_2" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
+                                              <input type="text" value="<?php if(isset($arr[0]['tags'])){  echo join(', ',$tag_array) ;} ?>" name="topics" class="form-control" id="tags_2" placeholder="Add tags" aria-describedby="inputGroupPrepend2" required="">
                                           </div>
                                           <div class="text-center mb-4 mt-4">
                                               <button type="submit" id="register" class="btn btn-primary">Update Interests</button>

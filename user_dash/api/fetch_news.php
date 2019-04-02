@@ -22,9 +22,14 @@ function object_2_array($result)
 include '../../config.php';
 include '../api/fetch_user.php' ;
 $collection = $db->news ;
+if(isset($arr[0]['tags'])){
 $tag = $arr[0]['tags'] ;
 $tag_array = object_2_array($tag) ;
 //echo join(', ',$tag_array) ;
+$qry = array();
+$cursor = $collection->find($qry);
+$news = $cursor->toArray() ;
+}
 $qry = array();
 $cursor = $collection->find($qry);
 $news = $cursor->toArray() ;
